@@ -1,0 +1,30 @@
+$grid-column-number: 12;
+$grid-max-width: 1440px;
+$grid-gutter: 20px;
+
+$grid-gutter-number: $grid-column-number - 1;
+$grid-gutter-subtract: $grid-gutter * $grid-gutter-number;
+
+.grid {
+    clear: both;
+    display: block;
+    max-width: $grid-max-width;
+    width: 100%;
+    &__Col {
+        display: inline-block;
+        float: left;
+        &:not(:first-child) {
+          margin-left: $grid-gutter;
+        }
+    }
+    @for $i from 1 through $grid-column-number {
+        &__Col-#{$i} {
+            @extend .grid__Col;
+            @if $i != 1 {
+              width: calc(((100% - #{$grid-gutter-subtract}) / #{$grid-column-number}) * #{$i} + ((#{$i} - 1) * 20px));
+            } @else {
+              width: calc(((100% - #{$grid-gutter-subtract}) / #{$grid-column-number}) * #{$i});
+            }
+        }
+    }
+}
