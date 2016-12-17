@@ -1,0 +1,85 @@
+%btn {
+  display: inline-block;
+  cursor: pointer;
+  outline: 0;
+  text-align: center;
+}
+.btn-block {
+  display: block;
+}
+
+$btn-sizes: (
+  (small, sm, .75em, 1.5em, 1em),
+  (medium, md, 1.25em, 2.5em, 2em),
+  (large, lg, 2em, 3em, 3em)
+);
+
+$btn-colors: (
+  (white, #fff, #000),
+  (black, #000, #fff),
+  (red, #0ff, #fff),
+  (green, #f0f, #fff),
+  (blue, #ff0, #fff)
+);
+
+
+
+/* Sizes */
+@each $class, $short-class, $font-size, $height, $padding in $btn-sizes {
+  .btn-#{$class}, .btn-#{$short-class} {
+    font-size: #{$font-size};
+    height: #{$height};
+    line-height: #{$height};
+    padding: 0 #{$padding};
+  }
+}
+
+/* Styles */
+// @include btn-style-empty(...);
+@mixin btn-style-empty($btn-colors, $btn-sizes) {
+  background-color: transparent;
+  border: 0;
+  @each $class, $p-hex, $s-hex in $btn-colors {
+    .btn-#{$class} {
+      color: #{$s-hex};
+    }
+  }
+}
+.btn-style-fill {}
+.btn-style-outline {}
+.btn-style-rounded {}
+.btn-style- {}
+
+/* States */
+.btn-hover {}
+.btn-disabled {}
+.btn-hover {}
+.btn-hover {}
+
+/* Modes */
+.btn-default {}
+.btn-primary {}
+.btn-success {}
+.btn-info {}
+.btn-warning {}
+.btn-danger {}
+.btn-link {}
+
+/* Custom */
+.btn {
+  @extend %btn;
+}
+
+.btn-custom {
+  @extend %btn;
+  background: #fff;
+  border: 0;
+  border-radius: 3px;
+  box-shadow: 1px 0 20px rgba(0, 0, 0, 0.13);
+  color: #000;
+  font-size: .75em;
+  height: 4em;
+  line-height: 4em;
+  padding: 0 3em;
+  text-transform: uppercase;
+}
