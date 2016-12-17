@@ -5,7 +5,7 @@ $grid-gutter: 20px;
 $grid-gutter-number: $grid-column-number - 1;
 $grid-gutter-subtract: $grid-gutter * $grid-gutter-number;
 
-.grid {
+.grid, .row {
     clear: both;
     display: block;
     max-width: $grid-max-width;
@@ -18,7 +18,7 @@ $grid-gutter-subtract: $grid-gutter * $grid-gutter-number;
         }
     }
     @for $i from 1 through $grid-column-number {
-        &__Col-#{$i} {
+        &__Col-#{$i}, .col-#{$i} {
             @extend .grid__Col;
             @if $i != 1 {
               width: calc(((100% - #{$grid-gutter-subtract}) / #{$grid-column-number}) * #{$i} + ((#{$i} - 1) * 20px));
